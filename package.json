@@ -1,0 +1,17 @@
+{
+  "name": "node-es-scroll",
+  "version": "1.0.0",
+  "description": "Script for scrolling through elasticsearch uri",
+  "bin": {
+    "nes": "bin/nes.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viktor Silfverström <viktor@silfverstrom.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.13.0",
+    "elasticsearch": "^14.0.0"
+  }
+}
