@@ -5,6 +5,7 @@ program
   .version('1.0.0')
   .option('-h, --host [value]', 'Host')
   .option('-i, --index [value]', 'Index')
+  .option('-b --body [value]', 'Body')
   .parse(process.argv);
 
 if (!program.host) {
@@ -26,10 +27,12 @@ const client = new elasticsearch.Client({
 let totalHits = 0;
 
 // first we do a search, and specify a scroll timeout
-client.search({
+let o = {
   index: INDEX,
   scroll: '30s', // keep the search results "scrollable" for 30 seconds
-}, function getMoreUntilDone(error, response) {
+};
+if (program.body) o.body = program.body;
+client.search(o, function getMoreUntilDone(error, response) {
   if (error) {
     console.error(error);
     process.exit(1);
